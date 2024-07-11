@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Departement;
+use App\Models\Department;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -33,7 +33,7 @@ class DepartementSeeder extends Seeder
         ];
 
         foreach ($departementsData as  $value) {
-            $departement = Departement::create($value);
+            $departement = Department::create($value);
             $departement->save();
             # code...
         }

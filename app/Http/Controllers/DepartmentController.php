@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departement;
-use App\Models\Department;
-use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $employees = Employee::with('department')->get();
-        // dd($employees[0]->departement->name);
-       return view("employee.index",["employees"=>$employees]);
+        //
     }
 
     /**
@@ -24,9 +19,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $departments = Department::all();
-
-        return view('employee.create',["departments"=>$departments]);
+        //
     }
 
     /**
@@ -40,7 +33,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show(string $id)
     {
         //
     }
@@ -48,15 +41,15 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employee $employee)
+    public function edit(string $id)
     {
-        return view("employee.edit");
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -64,7 +57,7 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(string $id)
     {
         //
     }

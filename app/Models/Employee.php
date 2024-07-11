@@ -8,13 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    protected $table = 'employees';
+
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
     /**
      * Get the user that owns the Employee
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function departements()
+    public function department()
     {
-        return $this->belongsTo(Departement::class, 'departement_id', 'id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 }

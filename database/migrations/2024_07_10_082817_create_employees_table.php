@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('address'); 
             $table->string('phone_number');
             $table->string('email')->unique(); 
-            $table->unsignedBigInteger('departement_id');
-            $table->foreign('departement_id')->references('id')->on('departements');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->timestamps();  
         });
     }
