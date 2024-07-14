@@ -2,6 +2,17 @@
 @section('title', 'Employee')
 @section('content')
     <div class="">
+        @if (session('success'))
+        <x-toast-success title="{{ session('success') }}"/>
+           
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <h1 class="text-xl font-bold"> Employee List</h1>
         <div class="flex  justify-between space-x-12 ">
 
@@ -45,8 +56,9 @@
                         Department
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        <span class="sr-only">Edit</span>
+                        Actions
                     </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -64,8 +76,23 @@
                         <td class="px-6 py-4">
                             {{ $item->department['name'] }}
                         </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <td class="px-6 py-4 text-right flex">
+                            <a href={{ route('employees.edit', $item->id) }}
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+
+                            <x-modal-delete title="Are you sure you want to delete this employee?"
+                                message="This action cannot be undone." action="{{ route('employees.destroy', $item->id) }}"
+                                id="{{ $item->id }}" confirmText="Yes, I'm sure" cancelText="No, cancel" />
+
                         </td>
                     </tr>
                 @endforeach
